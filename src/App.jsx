@@ -87,9 +87,9 @@ const App = () => {
                     } />
 
                     <Route path='/courses' element={
-                        <ProtectRoute >
-                            <CoursePage />
-                        </ProtectRoute>
+
+                        <CoursePage />
+
                     } />
 
                     <Route path='/dashbord' element={
