@@ -42,113 +42,113 @@ import axios from 'axios'
 const App = () => {
 
     // const [Loader, setLoader] = useState(false)
-    useEffect(() => {
-        axios.interceptors.request.use((config) => {
-            // setLoader(true)
-            // console.log("interceptor : ", config.url);
-            config.url = `https://backend-h9sa.onrender.com${config.url}`
-            console.log("interceptor : ", config.url);
-            return config;
-        }, (error) => {
-            return Promise.reject(error);
-        });
 
-        // axios.interceptors.response.use((config) => {
-        //     setLoader(false)
-        //     return config;
-        // }, (error) => {
-        //     return Promise.reject(error);
-        // });
-    }, [])
+    axios.interceptors.request.use((config) => {
+        // setLoader(true)
+        // console.log("interceptor : ", config.url);
+        config.url = `https://backend-h9sa.onrender.com${config.url}`
+        console.log("interceptor : ", config.url);
+        return config;
+    }, (error) => {
+        return Promise.reject(error);
+    });
+
+    // axios.interceptors.response.use((config) => {
+    //     setLoader(false)
+    //     return config;
+    // }, (error) => {
+    //     return Promise.reject(error);
+    // });
+}
 
 
-    return (
-        <>
-            <BrowserRouter>
-                <NavbarUI />
-                {/* <div className="grid justify-items-center">
+return (
+    <>
+        <BrowserRouter>
+            <NavbarUI />
+            {/* <div className="grid justify-items-center">
                     <LoaderUI show={Loader} />
                 </div> */}
-                <Routes>
-                    {/* Unprotected Routes */}
-                    <Route path='*' element={<PageNotFoundUI />} />
-                    <Route path='/login' element={<LoginPage />} />
-                    <Route path='/signup' element={<RegistrationPage />} />
-                    {/* <Route path='/about' element={<AboutPage />} /> */}
-                    {/* <Route path='/support' element={<SupportPage />} /> */}
-                    {/* <Route path='/contact' element={<ContactPage />} /> */}
-                    <Route path='/loader' element={<LoaderUI />} />
+            <Routes>
+                {/* Unprotected Routes */}
+                <Route path='*' element={<PageNotFoundUI />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/signup' element={<RegistrationPage />} />
+                {/* <Route path='/about' element={<AboutPage />} /> */}
+                {/* <Route path='/support' element={<SupportPage />} /> */}
+                {/* <Route path='/contact' element={<ContactPage />} /> */}
+                <Route path='/loader' element={<LoaderUI />} />
 
-                    {/* Protected Routes */}
-                    <Route path='/' element={
-                        <ProtectRoute >
-                            <HomePage />
-                        </ProtectRoute>
-                    } />
-                    <Route path='/feedback' element={
-                        <ProtectRoute >
-                            <ContactPage />
-                        </ProtectRoute>
-                    } />
+                {/* Protected Routes */}
+                <Route path='/' element={
+                    <ProtectRoute >
+                        <HomePage />
+                    </ProtectRoute>
+                } />
+                <Route path='/feedback' element={
+                    <ProtectRoute >
+                        <ContactPage />
+                    </ProtectRoute>
+                } />
 
-                    <Route path='/courses' element={
+                <Route path='/courses' element={
 
-                        <CoursePage />
+                    <CoursePage />
 
-                    } />
+                } />
 
-                    <Route path='/dashbord' element={
-                        <ProtectRoute >
-                            <DashboardPage />
-                        </ProtectRoute>
-                    } />
+                <Route path='/dashbord' element={
+                    <ProtectRoute >
+                        <DashboardPage />
+                    </ProtectRoute>
+                } />
 
-                    <Route path='/videoPlayer' element={
-                        <ProtectRoute >
-                            <VideoPlayerUI />
-                        </ProtectRoute>
-                    } />
-                    <Route path='/updatedetails' element={
-                        <ProtectRoute >
-                            <ProfileUpdateUI />
-                        </ProtectRoute>
-                    } />
+                <Route path='/videoPlayer' element={
+                    <ProtectRoute >
+                        <VideoPlayerUI />
+                    </ProtectRoute>
+                } />
+                <Route path='/updatedetails' element={
+                    <ProtectRoute >
+                        <ProfileUpdateUI />
+                    </ProtectRoute>
+                } />
 
-                    <Route path='/adminDashboard' element={
-                        <ProtectRoute >
-                            <AdminDashboard />
-                        </ProtectRoute>
-                    } >
-                        <Route path='profile' element={<ProfilePage />} />
-                        <Route path='allcourse' element={<AdminAllCourseUI />} />
-                        <Route path='teachers' element={<AllTeacherUI />} />
-                        <Route path='students' element={<AllStudentUI />} />
-                        <Route path='info' element={<InfoUI />} />
-                    </Route>
+                <Route path='/adminDashboard' element={
+                    <ProtectRoute >
+                        <AdminDashboard />
+                    </ProtectRoute>
+                } >
+                    <Route path='profile' element={<ProfilePage />} />
+                    <Route path='allcourse' element={<AdminAllCourseUI />} />
+                    <Route path='teachers' element={<AllTeacherUI />} />
+                    <Route path='students' element={<AllStudentUI />} />
+                    <Route path='info' element={<InfoUI />} />
+                </Route>
 
-                    <Route path='/teacherDashboard' element={
-                        <ProtectRoute >
-                            <TeacherDashboardPage />
-                        </ProtectRoute>
-                    } >
-                        <Route path='profile' element={<ProfilePage />} />
-                        <Route path='createcourse' element={<CourseSetupUI />} />
-                        <Route path='courseview' element={<CourseViewUI />} />
-                        <Route path='updatevideo' element={<UpdateVideoDetailsUI />} />
-                    </Route>
+                <Route path='/teacherDashboard' element={
+                    <ProtectRoute >
+                        <TeacherDashboardPage />
+                    </ProtectRoute>
+                } >
+                    <Route path='profile' element={<ProfilePage />} />
+                    <Route path='createcourse' element={<CourseSetupUI />} />
+                    <Route path='courseview' element={<CourseViewUI />} />
+                    <Route path='updatevideo' element={<UpdateVideoDetailsUI />} />
+                </Route>
 
-                    <Route path='/studentDashboard' element={
-                        <ProtectRoute >
-                            <UserDashboarsPage />
-                        </ProtectRoute>
-                    } >
-                        <Route path='profile' element={<ProfilePage />} />
-                    </Route>
-                </Routes>
-                <FooterUI />
-            </BrowserRouter>
-        </>
-    )
+                <Route path='/studentDashboard' element={
+                    <ProtectRoute >
+                        <UserDashboarsPage />
+                    </ProtectRoute>
+                } >
+                    <Route path='profile' element={<ProfilePage />} />
+                </Route>
+            </Routes>
+            <FooterUI />
+        </BrowserRouter>
+    </>
+)
 }
 
 export default App
