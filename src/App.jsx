@@ -33,6 +33,8 @@ import FooterUI from './component/ui/10-Footer/FooterUI.jsx'
 import UpdateVideoDetailsUI from './component/ui/29-UpdateVideoDetailUI/UpdateVideoDetailsUI.jsx'
 import LoaderUI from './component/ui/0-LoaderUI/LoaderUI.jsx'
 import InfoUI from './component/ui/33-InfoUI/InfoUI.jsx';
+import { useEffect } from 'react'
+import axios from 'axios'
 // import axios from 'axios'
 // import { useEffect, useState } from 'react'
 
@@ -40,21 +42,24 @@ import InfoUI from './component/ui/33-InfoUI/InfoUI.jsx';
 const App = () => {
 
     // const [Loader, setLoader] = useState(false)
-    // useEffect(() => {
-    //     axios.interceptors.request.use((config) => {
-    //         setLoader(true)
-    //         return config;
-    //     }, (error) => {
-    //         return Promise.reject(error);
-    //     });
+    useEffect(() => {
+        axios.interceptors.request.use((config) => {
+            // setLoader(true)
+            // console.log("interceptor : ", config.url);
+            config.url = `https://backend-h9sa.onrender.com${config.url}`
+            console.log("interceptor : ", config.url);
+            return config;
+        }, (error) => {
+            return Promise.reject(error);
+        });
 
-    //     axios.interceptors.response.use((config) => {
-    //         setLoader(false)
-    //         return config;
-    //     }, (error) => {
-    //         return Promise.reject(error);
-    //     });
-    // }, [])
+        // axios.interceptors.response.use((config) => {
+        //     setLoader(false)
+        //     return config;
+        // }, (error) => {
+        //     return Promise.reject(error);
+        // });
+    }, [])
 
 
     return (

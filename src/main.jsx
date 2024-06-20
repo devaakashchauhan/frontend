@@ -10,7 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <App />
     <ToastContainer
       position="top-right"
@@ -25,5 +26,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       theme="light"
       transition:Bounce
     />
-  </React.StrictMode>,
+  </>
+  // </React.StrictMode>,
 )
