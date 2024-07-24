@@ -46,7 +46,7 @@ const App = () => {
     axios.interceptors.request.use((config) => {
         // setLoader(true)
         // console.log("interceptor : ", config.url);
-        config.url = `https://backend-yfe2.onrender.com${config.url}`
+        config.url = `https://backend-agrg.onrender.com${config.url}`
         console.log("interceptor : ", config.url);
         return config;
     }, (error) => {
